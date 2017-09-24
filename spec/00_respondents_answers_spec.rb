@@ -1,17 +1,28 @@
 require 'spec_helper'
+require 'rubygems'
+require 'pry'
 
 RSpec.describe '00: Respondent Answers' do
   class Response
     def self.count(responses)
-      # your code goes here
+       return responses.count # returns count
     end
 
     def self.for(responses, user)
-      # your code goes here
+      for i in responses
+        if i[:user] == user # returns hash
+          return i
+        end
+      end
     end
 
     def self.present?(responses, user)
-      # your code goes here
+      for i in responses
+        if i[:user] == user
+          return true
+        end
+      end
+      return false
     end
 
     def self.positive(responses)
@@ -36,30 +47,30 @@ RSpec.describe '00: Respondent Answers' do
     ]
   end
 
-  context "count" do
+  context "count" do # done
     it "counts the number of responses" do
       expect(Response.count(responses)).to eq(4)
     end
   end
 
-  context "for" do
+  context "for" do # done
     it "finds the response from frank@example.com" do
       response = Response.for(responses, "frank@example.com")
       expect(response[:answer]).to eq(3)
     end
 
-    it "finds the response from bob@example.com" do
+    it "finds the response from bob@example.com" do # done
       response = Response.for(responses, "bob@example.com")
       expect(response[:answer]).to eq(2)
     end
   end
 
   context "present?" do
-    it "frank@example.com's response is present" do
+    it "frank@example.com's response is present" do #done
       expect(Response.present?(responses, "frank@example.com")).to be true
     end
 
-    it "bill@example.com's response is not present" do
+    it "bill@example.com's response is not present" do #done
       expect(Response.present?(responses, "bill@example.com")).to be false
     end
   end

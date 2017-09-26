@@ -5,12 +5,12 @@ require 'pry'
 RSpec.describe '00: Respondent Answers' do
   class Response
     def self.count(responses)
-       return responses.count # returns count
+       return responses.count
     end
 
     def self.for(responses, user)
       for i in responses
-        if i[:user] == user # returns hash
+        if i[:user] == user
           return i
         end
       end
@@ -26,15 +26,33 @@ RSpec.describe '00: Respondent Answers' do
     end
 
     def self.positive(responses)
-      # your code goes here
+      @positive_count = 0
+      for i in responses
+        if i[:answer] > 3
+          @positive_count += 1
+        end
+      end
+      return @positive_count
     end
 
     def self.negative(responses)
-      # your code goes here
+      @negative_count = 0
+      for i in responses
+        if i[:answer] < 3
+          @negative_count += 1
+        end
+      end
+      return @negative_count
     end
 
     def self.average(responses)
-      # your codes goes here
+      @average = 0
+      @sum = 0
+      for i in responses
+        @sum += i[:answer]
+      end
+      @average = @sum.to_f / responses.length
+      return @average
     end
   end
 
@@ -75,19 +93,19 @@ RSpec.describe '00: Respondent Answers' do
     end
   end
 
-  context "positive" do
+  context "positive" do #done
     it "finds the positive responses (score > 3)" do
       expect(Response.positive(responses)).to eq(1)
     end
   end
 
-  context "negative" do
+  context "negative" do #done
     it "finds the negative responses (score < 3)" do
       expect(Response.negative(responses)).to eq(2)
     end
   end
 
-  context "average" do
+  context "average" do #done
     it "finds the average of the answers" do
       expect(Response.average(responses)).to eq(2.5)
     end

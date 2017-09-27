@@ -6,12 +6,12 @@ RSpec.describe Surveyor::Answer, '03: Answer validations' do
   let(:question) { double(Surveyor::Question, type: 'rating') }
 
   context "question validation" do
-    context "when the answer has a question" do
+    context "when the answer has a question" do #done
       subject { described_class.new(question: question, value: 5) }
       it { should be_valid }
     end
 
-    context "when the answer has no question" do
+    context "when the answer has no question" do #done
       subject { described_class.new(value: 5) }
       it { should_not be_valid }
     end
@@ -21,7 +21,7 @@ RSpec.describe Surveyor::Answer, '03: Answer validations' do
     # NOTE: Rating questions are rated between 1 and 5.
     let(:question) { double(Surveyor::Question, type: 'rating') }
 
-    context "when the value is 1" do
+    context "when the value is 1" do #done
       subject do
         described_class.new(
           question: question,
@@ -32,7 +32,7 @@ RSpec.describe Surveyor::Answer, '03: Answer validations' do
       it { should be_valid }
     end
 
-    context "when the value is 5" do
+    context "when the value is 5" do #done
       subject do
         described_class.new(
           question: question,
@@ -43,7 +43,7 @@ RSpec.describe Surveyor::Answer, '03: Answer validations' do
       it { should be_valid }
     end
 
-    context "when the value is 6" do
+    context "when the value is 6" do #done
       subject do
         described_class.new(
           question: question,
@@ -55,7 +55,7 @@ RSpec.describe Surveyor::Answer, '03: Answer validations' do
     end
   end
 
-  context "for a free text question" do
+  context "for a free text question" do #.type not recognized 
     let(:question) { double(Surveyor::Question, type: 'free_text') }
 
     # NOTE: The rating validations should not apply for 'free_text' questions.

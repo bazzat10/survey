@@ -3,7 +3,13 @@ require 'spec_helper'
 RSpec.describe '01: Questions and Answers' do
   class Response
     def self.answered?(responses, user, question)
-      # your code goes here
+      for i in responses
+        if i[:user] == user && i[:answers][question] != nil
+          return true
+        else
+          return false
+        end
+      end
     end
 
     def self.answer_for_question_by_user(responses, question, user)

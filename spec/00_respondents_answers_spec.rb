@@ -26,33 +26,33 @@ RSpec.describe '00: Respondent Answers' do
     end
 
     def self.positive(responses)
-      @positive_count = 0
+      positive_count = 0
       for i in responses
         if i[:answer] > 3
-          @positive_count += 1
+          positive_count += 1
         end
       end
-      return @positive_count
+      return positive_count
     end
 
     def self.negative(responses)
-      @negative_count = 0
+      negative_count = 0
       for i in responses
         if i[:answer] < 3
-          @negative_count += 1
+          negative_count += 1
         end
       end
-      return @negative_count
+      return negative_count
     end
 
     def self.average(responses)
-      @average = 0
-      @sum = 0
+      average = 0
+      sum = 0
       for i in responses
-        @sum += i[:answer]
+        sum += i[:answer]
       end
-      @average = @sum.to_f / responses.length
-      return @average
+      average = sum.to_f / responses.length #calculates and return float
+      return average
     end
   end
 

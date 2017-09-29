@@ -55,7 +55,7 @@ RSpec.describe Surveyor::Answer, '03: Answer validations' do
     end
   end
 
-  context "for a free text question" do #.type not recognized 
+  context "for a free text question" do #.type not recognized in RSpec
     let(:question) { double(Surveyor::Question, type: 'free_text') }
 
     # NOTE: The rating validations should not apply for 'free_text' questions.

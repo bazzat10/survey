@@ -7,27 +7,27 @@ RSpec.describe Surveyor::Survey, '05: Surveys, questions and responses' do
   let(:question) { double(Surveyor::Question) }
   let(:response) { double(Surveyor::Response) }
 
-  it "has a name" do
+  it "has a name" do # done
     expect(survey.name).to eq("ACME Engagement Survey")
   end
 
-  context "questions" do
+  context "questions" do #done
     it "has no questions by default" do
       expect(survey.questions.count).to eq(0)
     end
 
-    it "can add a question to the survey" do
+    it "can add a question to the survey" do #done
       survey.questions << question
       expect(survey.questions.count).to eq(1)
     end
   end
 
-  context "responses" do
+  context "responses" do #done
     it "has no responses by default" do
       expect(survey.responses.count).to eq(0)
     end
 
-    it "can add a response to the survey" do
+    it "can add a response to the survey" do #done
       survey.responses << response
       expect(survey.responses.count).to eq(1)
     end

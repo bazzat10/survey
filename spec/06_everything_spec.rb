@@ -51,7 +51,7 @@ RSpec.describe '06: Everything together' do
       expect(survey.participation_percentage(question_1)).to eq(100)
     end
 
-    it "calculates participation percentage for question 1" do
+    it "calculates participation percentage for question 2" do
       expect(survey.participation_percentage(question_2)).to eq(66.67)
     end
   end

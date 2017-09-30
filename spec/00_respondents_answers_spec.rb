@@ -9,48 +9,48 @@ RSpec.describe '00: Respondent Answers' do
     end
 
     def self.for(responses, user)
-      for i in responses
+      responses.each { |i|
         if i[:user] == user
           return i
         end
-      end
+      }
     end
 
     def self.present?(responses, user)
-      for i in responses
+      responses.each { |i|
         if i[:user] == user
           return true
         end
-      end
+      }
       return false
     end
 
     def self.positive(responses)
-      positive_count = 0
-      for i in responses
+      positive_responses = 0
+      responses.each { |i|
         if i[:answer] > 3
-          positive_count += 1
+          positive_responses += 1
         end
-      end
-      return positive_count
+      }
+      return positive_responses
     end
 
     def self.negative(responses)
-      negative_count = 0
-      for i in responses
+      negative_responses = 0
+      responses.each { |i|
         if i[:answer] < 3
-          negative_count += 1
+          negative_responses += 1
         end
-      end
-      return negative_count
+      }
+      return negative_responses
     end
 
     def self.average(responses)
       average = 0
       sum = 0
-      for i in responses
+      responses.each { |i|
         sum += i[:answer]
-      end
+      }
       average = sum.to_f / responses.length #calculates and return float
       return average
     end

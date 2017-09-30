@@ -3,35 +3,37 @@ require 'spec_helper'
 RSpec.describe '01: Questions and Answers' do
   class Response
     def self.answered?(responses, user, question)
-      for i in responses
-        if i[:user] == user && i[:answers][question] != nil
-          return true
-        else
-          return false
-        end
-      end
+      responses.each { |i|
+        result =
+          if i[:user] == user && i[:answers][question] != nil
+            true
+          else
+            false
+          end
+        return result
+      }
     end
 
     def self.answer_for_question_by_user(responses, question, user)
-      for i in responses
+      responses.each { |i|
         if i[:user]
           return i[:answers][question]
         end
-      end
+      }
     end
 
     def self.question_average(responses, question)
       sum = 0
       num_people_answered = 0
       average = 0
-      for i in responses
+      responses.each { |i|
         if i[:answers][question] == nil
           sum += 0;
         else
           sum += i[:answers][question]
           num_people_answered += 1
         end
-      end
+      }
       average = sum.to_f / num_people_answered
       return average.round(2)
     end
@@ -39,11 +41,11 @@ RSpec.describe '01: Questions and Answers' do
     def self.question_participation_percentage(responses, question)
       percentage = 0
       participated = 0
-      for i in responses
+      responses.each { |i|
         if i[:answers][question] != nil
           participated += 1
         end
-      end
+      }
       percentage = (participated.to_f / responses.length) * 100
       return percentage.round(2)
     end
@@ -51,13 +53,14 @@ RSpec.describe '01: Questions and Answers' do
     def self.overall_participation_percentage(responses)
       percentage = 0
       participated = 0
-      for i in responses
-        if i[:answers].empty?
-          participated += 0
-        else
-          participated += 1
-        end
-      end
+      responses.each { |i|
+        participated +=
+          if i[:answers].empty?
+            0
+          else
+            1
+          end
+      }
       percentage = (participated.to_f / responses.length) * 100
       return percentage.round(2)
     end

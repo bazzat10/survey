@@ -27,14 +27,9 @@ module Surveyor
     end
 
     def participation_percentage(question_1)
-      for i in @response
-        binding.pry
-      end
+      responses.each { |i|
 
-      @questions
-      print question_1.title
-      binding.pry
-
+      }
     end
 
   end

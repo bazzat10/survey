@@ -3,7 +3,7 @@ require 'pry'
 module Surveyor
   class Question
 
-    def initialize (new_question)
+    def initialize(new_question)
       @title = new_question[:title]
       @type = new_question[:type]
     end
